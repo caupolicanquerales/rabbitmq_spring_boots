@@ -9,21 +9,29 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitmqConfiguration {
 	
-	public static final String EXCHANGE_NAME="java_exchange";
-	public static final String ROUTING_KEY="java.response";
-	public static final String QUEUE_NAME="java.queue";
+	public static final String EXCHANGE_NAME="amq.topic";
+	public static final String ROUTING_KEY_JAVA="java.blink.#";
+	public static final String ROUTING_KEY_PYTHON="python.#";
+	public static final String QUEUE_NAME_JAVA="java.queue";
+	public static final String QUEUE_NAME_PYTHON="python.queue";
 	public static final boolean IS_DURABLE_QUEUE=false;
 	
 	
 	@Bean
-	public Queue queue() {
-		return new Queue(QUEUE_NAME,IS_DURABLE_QUEUE);
+	public Queue queueJava() {
+		return new Queue(QUEUE_NAME_JAVA,IS_DURABLE_QUEUE);
+	}
+	
+	@Bean
+	public Queue queueArduino() {
+		return new Queue(QUEUE_NAME_PYTHON,IS_DURABLE_QUEUE);
 	}
 	
 	@Bean
@@ -32,8 +40,13 @@ public class RabbitmqConfiguration {
 	}
 	
 	@Bean
-	public Binding binding(Queue queue, TopicExchange topicExchange) {
-		return BindingBuilder.bind(topicExchange).to(topicExchange).with(ROUTING_KEY);
+	public Binding bindingJava(@Qualifier("queueJava") Queue queue, TopicExchange topicExchange) {
+		return BindingBuilder.bind(queue).to(topicExchange).with(ROUTING_KEY_JAVA);
+	}
+	
+	@Bean
+	public Binding bindingArduino(@Qualifier("queueArduino") Queue queue, TopicExchange topicExchange) {
+		return BindingBuilder.bind(queue).to(topicExchange).with(ROUTING_KEY_PYTHON);
 	}
 	
 	@Bean
