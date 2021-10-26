@@ -1,7 +1,8 @@
+C:\Users\Usuario\Desktop\Programas\Spring Boots\rabbitmq_spring_boots\src\main\java\com\capo\rabbitmq\service\MqttConfigurationService.java
 C:\Users\Usuario\Desktop\Programas\Spring Boots\rabbitmq_spring_boots\src\main\java\com\capo\rabbitmq\RabbitmqApplication.java
 C:\Users\Usuario\Desktop\Programas\Spring Boots\rabbitmq_spring_boots\src\main\java\com\capo\rabbitmq\configuration\RabbitmqConfiguration.java
 C:\Users\Usuario\Desktop\Programas\Spring Boots\rabbitmq_spring_boots\src\main\java\com\capo\rabbitmq\subscriber\SubscriberToPython.java
-C:\Users\Usuario\Desktop\Programas\Spring Boots\rabbitmq_spring_boots\src\main\java\com\capo\rabbitmq\configuration\RabbitmqConfigurationArduino.java
+C:\Users\Usuario\Desktop\Programas\Spring Boots\rabbitmq_spring_boots\src\main\java\com\capo\rabbitmq\configuration\MqttConfigurationArduino.java
 C:\Users\Usuario\Desktop\Programas\Spring Boots\rabbitmq_spring_boots\src\main\java\com\capo\rabbitmq\dto\BlinkNumber.java
 C:\Users\Usuario\Desktop\Programas\Spring Boots\rabbitmq_spring_boots\src\main\java\com\capo\rabbitmq\dto\SensorValues.java
 C:\Users\Usuario\Desktop\Programas\Spring Boots\rabbitmq_spring_boots\src\main\java\com\capo\rabbitmq\controller\Controller.java

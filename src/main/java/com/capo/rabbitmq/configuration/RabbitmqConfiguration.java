@@ -18,8 +18,10 @@ public class RabbitmqConfiguration {
 	
 	public static final String EXCHANGE_NAME="amq.topic";
 	public static final String ROUTING_KEY_JAVA="java.blink.#";
+	public static final String ROUTING_KEY_ARDUINO="arduino.#";
 	public static final String ROUTING_KEY_PYTHON="python.#";
 	public static final String QUEUE_NAME_JAVA="java.queue";
+	public static final String QUEUE_NAME_ARDUINO="mqtt-subscription-Arduinoqos0";
 	public static final String QUEUE_NAME_PYTHON="python.queue";
 	public static final boolean IS_DURABLE_QUEUE=false;
 	
@@ -30,9 +32,15 @@ public class RabbitmqConfiguration {
 	}
 	
 	@Bean
-	public Queue queueArduino() {
+	public Queue queueFromArduino() {
 		return new Queue(QUEUE_NAME_PYTHON,IS_DURABLE_QUEUE);
 	}
+	
+	/*
+	@Bean
+	public Queue queueToArduino() {
+		return new Queue(QUEUE_NAME_ARDUINO,IS_DURABLE_QUEUE);
+	}*/
 	
 	@Bean
 	public TopicExchange exchange() {
@@ -45,9 +53,15 @@ public class RabbitmqConfiguration {
 	}
 	
 	@Bean
-	public Binding bindingArduino(@Qualifier("queueArduino") Queue queue, TopicExchange topicExchange) {
+	public Binding bindingFromArduino(@Qualifier("queueFromArduino") Queue queue, TopicExchange topicExchange) {
 		return BindingBuilder.bind(queue).to(topicExchange).with(ROUTING_KEY_PYTHON);
 	}
+	
+	/*
+	@Bean
+	public Binding bindingToArduino(@Qualifier("queueToArduino") Queue queue, TopicExchange topicExchange) {
+		return BindingBuilder.bind(queue).to(topicExchange).with(ROUTING_KEY_ARDUINO);
+	}*/
 	
 	@Bean
 	public MessageConverter messageConverter() {

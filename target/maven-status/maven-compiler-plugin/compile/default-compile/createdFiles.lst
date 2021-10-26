@@ -2,6 +2,7 @@ com\capo\rabbitmq\configuration\RabbitmqConfiguration.class
 com\capo\rabbitmq\dto\SensorValues.class
 com\capo\rabbitmq\subscriber\SubscriberToPython.class
 com\capo\rabbitmq\RabbitmqApplication.class
+com\capo\rabbitmq\configuration\MqttConfigurationArduino.class
 com\capo\rabbitmq\dto\BlinkNumber.class
 com\capo\rabbitmq\controller\Controller.class
-com\capo\rabbitmq\configuration\RabbitmqConfigurationArduino.class
+com\capo\rabbitmq\service\MqttConfigurationService.class
